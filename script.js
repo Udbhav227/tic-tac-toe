@@ -33,6 +33,7 @@ const GameController = (() => {
   const player1 = Player("Player 1", "X");
   const player2 = Player("Player 2", "O");
   let currentPlayer = player1;
+  let gameOver = false;
 
   const switchTurn = () => {
     currentPlayer = (currentPlayer === player1) ? player2 : player1;
@@ -49,18 +50,27 @@ const GameController = (() => {
     for (let pattern of winningConditions) {
       const [a, b, c] = pattern;
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+        gameOver = true;
         return currentPlayer.name;
       };
     };
 
-    return board.includes("") ? null : "Tie";
+    if (!board.includes("")) {
+      gameOver = true; // Mark game as over
+      return "Tie!";
+    }
+
+    return null;
   };
 
   const playTurn = (index) => {
-    if (Gameboard.placeMarker(index, currentPlayer.marker)) {
+    if (Gameboard.placeMarker(index, currentPlayer.marker) && !gameOver) {
       const result = checkWinCondition();
+      console.log(Gameboard.getBoard());
       if (result) return result;
       switchTurn();
+    } else {
+      console.log("Game over! Reset to play again.")
     };
 
     return null;
@@ -69,6 +79,7 @@ const GameController = (() => {
   const resetGame = () => {
     Gameboard.resetBoard();
     currentPlayer = player1;
+    gameOver = false;
   };
 
   return {
