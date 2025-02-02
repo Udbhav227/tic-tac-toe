@@ -114,6 +114,7 @@ main {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
+  width: 12ch;
 }
 
 .reset-btn:hover {
@@ -152,11 +153,19 @@ footer {
   }
 
   main {
-    height: calc(100vh - 100px);
+    height: calc(100vh - 180px);
   }
 
   .game-status {
     font-size: 1.4rem;
     margin-bottom: 50px;
+  }
+
+  .reset-btn {
+    margin-bottom: 10px;
+  }
+
+  footer {
+    margin-bottom: 10px;
   }
 }
