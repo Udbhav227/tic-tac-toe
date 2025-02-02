@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
 
 body {
+  font-family: "Original Surfer", serif;
   height: 100%;
   background-color: #101b27;
   color: #E5F3FD;
@@ -11,7 +12,6 @@ body {
 /* Header  */
 header {
   background-color: #1b2837;
-  font-family: "Original Surfer", serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,7 +20,7 @@ header {
 }
 
 header img {
-  width: 60px;
+  width: 55px;
   border-radius: 50%;
   object-fit: contain;
 }
@@ -31,7 +31,7 @@ header .player-info {
 }
 
 header .player-name, .display-picture {
-  font-size: clamp(.8rem, 2.3vw, 1.8rem);
+  font-size: clamp(.8rem, 2.3vw, 1.6rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +50,25 @@ header .score-container {
   flex-grow: 1; 
 }
 
+.player1-score,
+.player2-score {
+  color: #e33158;
+}
+
 /* Main  */
 main {
-  /* height: calc(100vh - 100px); */
   height: calc(100vh - 110px);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   flex-grow: 1;
+}
+
+.game-status {
+  font-size: clamp(.8rem, 2.3vw, 1.8rem);
+  margin: 10px auto;
 }
 
 .tic-tac-toe-grid {
@@ -66,10 +76,9 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: 70vmin; 
-  height: 70vmin; 
+  width: min(90vmin, 500px); 
+  height: min(90vmin, 500px); 
 }
-
 
 .cell {
   display: flex;
@@ -77,7 +86,6 @@ main {
   align-items: center;
   min-width: 90%;
   min-height: 90%;
-  font-family: "Original Surfer", serif;;
   font-size: clamp(1rem, 5vw, 2.5rem);
   font-weight: bold;
 }
@@ -96,11 +104,28 @@ main {
   border-bottom: 3px solid #6b7885;
 }
 
+.reset-btn {
+  margin: 50px 7px 7px 7px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1b2837;
+  color: #E5F3FD;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #e33158;
+}
+
 /* Footer  */
 footer {
   color: #3bb5b2;
   text-align: center;
   font-size: 1rem;
+  /* margin: 10px 0; */
 }
 
 
@@ -130,8 +155,8 @@ footer {
     height: calc(100vh - 100px);
   }
 
-  .tic-tac-toe-grid {
-    width: 90vmin;
-    height: 90vmin;
+  .game-status {
+    font-size: 1.4rem;
+    margin-bottom: 50px;
   }
 }

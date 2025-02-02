@@ -20,7 +20,7 @@
       </div>
     </div>
   
-    <div class="score-container">0 - 0</div>
+    <div class="score-container"><span class="player1-score">0</span> - <span class="player2-score">0</span></div>
   
     <div class="player-info">
       <div class="player-name">
@@ -32,8 +32,12 @@
       </div>
     </div>
   </header>
-  
+
   <main>
+    <div class="game-status">
+      Udbhav's Turn
+    </div>
+
     <div class="tic-tac-toe-grid">
       <div class="row">
         <div class="cell" data-index="0">O</div>
@@ -51,10 +55,15 @@
         <div class="cell" data-index="8">X</div>
       </div>
     </div>
+
+    <div class="button-container">
+      <button class="reset-btn reset-score">Reset Score</button>
+      <button class="reset-btn reset-table">Reset Table</button>
+    </div>
   </main>  
 
   <footer>
-    Made with <span style="color:crimson">&hearts;</span> by Udbhav
+    Made with <span style="color:#e33158">&hearts;</span> by <span style="color:#e33158">Udbhav</span>
   </footer>
   
   <script src="script.js"></script>
