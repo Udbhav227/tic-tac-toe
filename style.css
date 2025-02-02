@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
+
+body {
+  background-color: #101b27;
+  color: #E5F3FD;
+}
+
+header {
+  background-color: #1b2837;
+  font-family: "Original Surfer", serif;;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px ;
+  line-height: 1.1;
+}
+
+header img {
+  width: 40px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+header .player-info {
+  display: flex;
+  gap: 10px;
+}
+
+header .player-name, .display-picture {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header .player-name p {
+  color: #BDD5E7;
+  font-size: clamp(.6rem, 1.5vw, 0.8rem);
+  padding: 0 1px;
+}
