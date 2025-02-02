@@ -8,15 +8,20 @@
   <title>Document</title>
 </head>
 <body>
+
   <header>
     <div class="player-info">
       <div class="display-picture">
-        <img src="img/avtr.jpg" alt="player 1 dp" class="player1dp"></div>
+        <img src="img/avtr.jpg" alt="player 1 dp" class="player1dp">
+      </div>
       <div class="player-name">
         Udbhav
         <p>Player 1</p>
       </div>
     </div>
+  
+    <div class="score-container">0 - 0</div>
+  
     <div class="player-info">
       <div class="player-name">
         Ashish
@@ -27,7 +32,31 @@
       </div>
     </div>
   </header>
-  <div></div>
+  
+  <main>
+    <div class="tic-tac-toe-grid">
+      <div class="row">
+        <div class="cell" data-index="0">0</div>
+        <div class="cell" data-index="1">1</div>
+        <div class="cell" data-index="2">2</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-index="3">3</div>
+        <div class="cell" data-index="4">4</div>
+        <div class="cell" data-index="5">5</div>
+      </div>
+      <div class="row">
+        <div class="cell" data-index="6">6</div>
+        <div class="cell" data-index="7">7</div>
+        <div class="cell" data-index="8">8</div>
+      </div>
+    </div>
+  </main>  
+
+  <footer>
+    Made with <span style="color:crimson">&hearts;</span> by Udbhav
+  </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>
