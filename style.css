@@ -56,8 +56,8 @@ header .score-container {
   flex-grow: 1;
 }
 
-.player1-score,
-.player2-score {
+#player1-score,
+#player2-score {
   color: #e33158;
 }
 

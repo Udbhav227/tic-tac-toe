@@ -18,7 +18,7 @@ const Gameboard = (() => {
   return { getBoard, placeMarker, resetBoard };
 })();
 
-const Player = (name, marker) => ({name, marker});
+const Player = (name, marker, score) => ({name, marker, score});
 
 const GameController = (() => {
   let player1, player2;
@@ -26,8 +26,8 @@ const GameController = (() => {
   let gameOver = false;
 
   const setPlayers = (name1, name2) => {
-    player1 = Player(name1 || "Player 1", "X");
-    player2 = Player(name2 || "Player 2", "O");
+    player1 = Player(name1 || "Player 1", "X", 0);
+    player2 = Player(name2 || "Player 2", "O", 0);
     currentPlayer = player1;
   };
 
@@ -47,6 +47,8 @@ const GameController = (() => {
       const [a, b, c] = pattern;
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         gameOver = true;
+        currentPlayer.score++;
+        Display.updateScore(player1.score, player2.score);
         return currentPlayer.name + " wins!";
       };
     };
@@ -91,6 +93,8 @@ const Display = (() =>{
   const footer = document.querySelector(".footer-text");
   let name1 = document.querySelector("#player1-name");
   let name2 = document.querySelector("#player2-name");
+  const score1 = document.querySelector("#player1-score");
+  const score2 = document.querySelector("#player2-score");
 
   const footerQuotes = [
     'Game on! 🔥 <span style="color:#e33158">Stay sharp</span>, stay unbeatable!',
@@ -125,6 +129,7 @@ const Display = (() =>{
     GameController.resetGame();
     name1.textContent = name1Input;
     name2.textContent = name2Input;
+    updateScore(0, 0);
     startBtn.textContent = "Restart Game"
     restartBtn.removeAttribute("hidden");
 });
@@ -150,9 +155,14 @@ const Display = (() =>{
     footer.innerHTML = randomQuote;
   }
 
+  const updateScore = (player1Score, player2Score) => {
+    score1.textContent = player1Score;
+    score2.textContent = player2Score;
+  }
+
   const showMessage = (message) => {
     status.textContent = message;
   };
 
-  return { updateBoard, updateTurn, updateFooter, showMessage };
+  return { updateBoard, updateTurn, updateFooter, updateScore, showMessage };
 })();
