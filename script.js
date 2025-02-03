@@ -43,19 +43,46 @@ const GameController = (() => {
       [0, 4, 8], [2, 4, 6]             
     ];
 
+    const winMessages = [
+      name => `${name} <span style="color: #e33158">obliterates</span> the competition! 💥`,
+      name => `${name} <span style="color: #e33158">reigns supreme</span>! 👑`,
+      name => `Game over! ${name} <span style="color: #e33158">takes the crown</span>! 👑`,
+      name => `${name} wins with <span style="color: #e33158">flawless strategy</span>! 🧠`,
+      name => `<span style="color: #e33158">Victory</span> is sweet for ${name}! 🍭`,
+      name => `${name} just <span style="color: #e33158">schooled</span> the opponent! 🎓`,
+      name => `${name} <span style="color: #e33158">dominates</span>! 🎯`,
+      name => `${name} wins! <span style="color: #e33158">Cue the victory dance</span>! 💃🕺`
+    ];
+
+    // Tie messages array
+    const tieMessages = [
+      'A <span style="color: #e33158">battle of equals</span>! 🤝',
+      'Mind games end in <span style="color: #e33158">stalemate</span>! 🧠⚔️',
+      'The board respects <span style="color: #e33158">neither player</span>! 🛡️',
+      'It\'s a tie! The <span style="color: #e33158">ultimate showdown</span>! ⚔️',
+      '<span style="color: #e33158">Draw</span>! The tension is palpable! 😱'
+    ];
+
+
     for (let pattern of winningConditions) {
       const [a, b, c] = pattern;
       if (board[a] && board[a] === board[b] && board[b] === board[c]) {
         gameOver = true;
         currentPlayer.score++;
         Display.updateScore(player1.score, player2.score);
-        return currentPlayer.name + " wins!";
+        // Add animation class to winning cells
+        pattern.forEach(index => 
+          document.querySelector(`[data-index="${index}"]`)
+          .classList.add("win-animation"));
+
+        const randomMessage = winMessages[Math.floor(Math.random() * winMessages.length)];
+        return randomMessage(currentPlayer.name);
       };
     };
 
     if (!board.includes("")) {
       gameOver = true; 
-      return "It's a tie!";
+      return tieMessages[Math.floor(Math.random() * tieMessages.length)];
     }
 
     return null;
@@ -77,6 +104,9 @@ const GameController = (() => {
   const resetGame = () => {
     Gameboard.resetBoard();
     gameOver = false;
+    document.querySelectorAll('.cell').forEach(cell => {
+      cell.classList.remove("win-animation");
+    });
     Display.updateBoard();
     Display.updateTurn(currentPlayer.name);
     Display.updateFooter();
@@ -161,7 +191,7 @@ const Display = (() =>{
   }
 
   const showMessage = (message) => {
-    status.textContent = message;
+    status.innerHTML = message;
   };
 
   return { updateBoard, updateTurn, updateFooter, updateScore, showMessage };

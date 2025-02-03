@@ -137,6 +137,16 @@ footer {
   font-size: 1.2rem;
 }
 
+@keyframes glow {
+  0% { background-color: #1b2837; }
+  50% { background-color: #e33158; }
+  100% { background-color: #1b2837; }
+}
+
+.win-animation {
+  animation: glow .5s ease-in-out
+}
+
 
 /* Responsiveness */
 @media (max-width: 480px) {
