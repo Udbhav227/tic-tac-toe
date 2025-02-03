@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 
@@ -18,8 +19,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px ;
-  line-height: 1.1;
+  padding: 10px 20px;
+  line-height: 1.2;
+  min-height: 78px;
 }
 
 header img {
@@ -33,7 +35,8 @@ header .player-info {
   gap: 10px;
 }
 
-header .player-name, .display-picture {
+header .player-name,
+.display-picture {
   font-size: clamp(.8rem, 2.3vw, 1.6rem);
   display: flex;
   flex-direction: column;
@@ -50,7 +53,7 @@ header .score-container {
   font-size: clamp(1rem, 5vw, 2.5rem);
   font-weight: bold;
   text-align: center;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .player1-score,
@@ -79,8 +82,8 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  width: min(90vmin, 500px); 
-  height: min(90vmin, 500px); 
+  width: min(90vmin, 500px);
+  height: min(90vmin, 500px);
 }
 
 .cell {
@@ -93,15 +96,15 @@ main {
   font-weight: bold;
 }
 
-.cell[data-index="3"], 
-.cell[data-index="4"], 
+.cell[data-index="3"],
+.cell[data-index="4"],
 .cell[data-index="5"] {
   border-left: 3px solid #6b7885;
   border-right: 3px solid #6b7885;
 }
 
-.cell[data-index="1"], 
-.cell[data-index="4"], 
+.cell[data-index="1"],
+.cell[data-index="4"],
 .cell[data-index="7"] {
   border-top: 3px solid #6b7885;
   border-bottom: 3px solid #6b7885;
@@ -131,18 +134,21 @@ main {
 footer {
   color: #3bb5b2;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 
 /* Responsiveness */
 @media (max-width: 480px) {
   header {
-    padding: 15px 20px;
+    padding: 15px 10px;
+    min-height: auto;
   }
 
   header img {
     width: 45px;
+    height: 45px;
+    background-color: #f0f0f0;
   }
 
   header .player-name {
@@ -162,8 +168,8 @@ footer {
   }
 
   .game-status {
-    font-size: 1.4rem;
-    margin: 40px 0px
+    font-size: 1.5rem;
+    margin: 40px 0px 30px 0;
   }
 
   .reset-btn {
@@ -171,7 +177,26 @@ footer {
     margin-top: 30px;
   }
 
+  .tic-tac-toe-grid {
+    padding: 15px 25px;
+  }
+
+  .cell {
+    font-size: clamp(1rem, 7vw, 2.5rem);
+  }
+
   footer {
+    font-size: 1rem;
+    margin-top: 10px;
     margin-bottom: 20px;
+    padding: 0px 20px;
+  }
+
+  .reset-btn:hover {
+    background-color: #1b2837;
+  }
+
+  .reset-btn:active {
+    background-color: #e33158;
   }
 }
